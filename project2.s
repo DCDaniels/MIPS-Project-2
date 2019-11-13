@@ -8,3 +8,10 @@ InputVariable: .space 1000			#Variable for user input
 .globl main					#Allows main to be refrenced anywhere
 
 main:
+
+	li $v0, 8				#Allows user to input
+	la $a0, InputVariable			#Saves input to  variable
+	syscall 				#Issues a System Call
+	
+	la $t1,InputVariable			#Load the variable to the register $t1
+	li $t3,32				#Stored a space in $t3 to check for spaces
