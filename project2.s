@@ -31,6 +31,9 @@ main:
 	output_bad_input:
 	li $v0,4
 	la $a0, BadInput			#Prints Invalid input
+	syscall
 	
+	li $v0, 10				#End of program if this is reached
+	syscall					
 	
 	
