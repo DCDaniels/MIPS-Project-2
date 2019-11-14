@@ -32,7 +32,9 @@ main:
 		beq $t5, $t0, beginning_characters	#Branch as long as no valid characters have been found
 		
 	
-	invalid_characters:			#Function to see if character is invalid
+	check_character:			#Function to see if character is invalid
+	blt $t6, $s0, output_bad_input		#Branch if character is below ASCII number for 0
+	bgt $t6, $s1, check_capital		#Branch if character is above ASCII number for 9
 	
 	
 	output_bad_input:			#Fucntion to print invalid output
@@ -47,11 +49,12 @@ main:
 	beginning_characters:			#Function that checks if character is a space or tab
 	beq $t6, $t3, skip_character		#Branches if character is a space
 	beq $t6, $t4, skip_character		#Branches if character is a tab
-	j invalid_characters			#Jump to invalid_characters
+	j check_character			#Jump to check_character
 	
 	
 	skip_character:				#Function that moves to next character
 	addi $t1,$t1,1				#Increments $t1 to check next number
 	j loop					#Jumps back to beginning of loop
 	
+	check_capital:				#Function that checks if input is valid when above numbers
 	
