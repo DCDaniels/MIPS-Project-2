@@ -32,6 +32,8 @@ main:
 	li $s5,121				#For highest common letter (I go to y not z)
 	li $t7,0				#Initialized for sum
 	la $s6, list				#Stores the list in a variable
+	li $s7, 0x0A				#Stored a new line
+	
 	
 	
 	loop:
@@ -40,6 +42,7 @@ main:
 		beq $t5,$t0, beginning_characters	#Branch as long as no valid characters have been found
 		beq $t6,$t3, ending_characters		#Branch if trailing character is a space
 		beq $t6,$t4, ending_characters		#Branch if trailing characters is a tab
+		beq $t6,$s7, good_input			#Branch if new line comes before a bad input
 	
 	
 	output_bad_input:			#Fucntion to print invalid output
