@@ -21,7 +21,8 @@ main:
 	li $t4,9				#Stored to check for tabs
 	li $t5,0				#Variable for total valid characters
 	li $t0,0				#Variable initialized to 0
-	li $s0,48				#For lowest valid input option
+	li $s0,48				#For lowest valid non letter input option
+	li $s1,57				#For highest valid non letter input option
 	
 	
 	
@@ -46,7 +47,7 @@ main:
 	beginning_characters:			#Function that checks if character is a space or tab
 	beq $t6, $t3, skip_character		#Branches if character is a space
 	beq $t6, $t4, skip_character		#Branches if character is a tab
-	j 
+	j invalid_characters			#Jump to invalid_characters
 	
 	
 	skip_character:				#Function that moves to next character
