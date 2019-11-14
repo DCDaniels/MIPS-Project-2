@@ -23,7 +23,8 @@ main:
 	li $t0,0				#Variable initialized to 0
 	li $s0,48				#For lowest valid non letter input option
 	li $s1,57				#For highest valid non letter input option
-	
+	li $s2,65				#For lowest capital letter
+	li $s3,89				#For highest capital letter (I go to Y not Z)
 	
 	
 	loop:
