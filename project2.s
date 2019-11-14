@@ -22,11 +22,15 @@ main:
 	li $t5,0				#Variable for total valid characters
 	
 	
+	
 	loop:
 		bgt $t5, $t2, output_bad_input	#Branch if more than 4 good characters
 		lb $t6, 0($t1)			#Gets each integer from the input
+		
 	
-	
+	output_bad_input:
+	li $v0,4
+	la $a0, BadInput			#Prints Invalid input
 	
 	
 	
