@@ -38,7 +38,8 @@ main:
 		bgt $t5, $t2, output_bad_input		#Branch if more than 4 good characters
 		lb $t6, 0($t1)				#Gets each integer from the input
 		beq $t5, $t0, beginning_characters	#Branch as long as no valid characters have been found
-		
+		beq $t6, $t3, ending_characters		#Branch if trailing character is a space
+		beq $t6, $t4, ending_characters		#Branch if trailing characters is a tab
 	
 	
 	output_bad_input:			#Fucntion to print invalid output
