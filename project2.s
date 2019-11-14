@@ -5,7 +5,9 @@
 
 .data 						#Declarations
 InputVariable: .space 1000			#Variable for user input 
+list: .word 0,0,0,0				#Created a word list
 BadInput: .asciiz "Invalid input"		#Variable used to output Invalid input
+
 .text						#Instructions stored in text segment at next available address
 .globl main					#Allows main to be refrenced anywhere
 
@@ -13,6 +15,7 @@ BadInput: .asciiz "Invalid input"		#Variable used to output Invalid input
 main:
 	li $v0, 8				#Allows user to input
 	la $a0, InputVariable			#Saves input to  variable
+	li $a1, 1001				#Allows the input to be 1000 characters
 	syscall 				#Issues a System Call
 	
 	la $t1,InputVariable			#Load the variable to the register $t1
@@ -28,6 +31,7 @@ main:
 	li $s4,97				#For lowest common letter
 	li $s5,121				#For highest common letter (I go to y not z)
 	li $t7,0				#Initialized for sum
+	la $s6, list				#Stores the list in a variable
 	
 	
 	loop:
