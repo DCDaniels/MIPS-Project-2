@@ -26,15 +26,24 @@ main:
 	loop:
 		bgt $t5, $t2, output_bad_input		#Branch if more than 4 good characters
 		lb $t6, 0($t1)				#Gets each integer from the input
-		beq $t5, $t0, beginning characters	#Branch as long as no valid characters have been found
+		beq $t5, $t0, beginning_characters	#Branch as long as no valid characters have been found
 		
 	
-	output_bad_input:
+	
+	output_bad_input:			#Fucntion to print invalid output
 	li $v0,4
 	la $a0, BadInput			#Prints Invalid input
 	syscall
 	
 	li $v0, 10				#End of program if this is reached
 	syscall					
+	
+	
+	beginning_characters:			#Function that checks if character is a space or tab
+	beq $t6, $t3, skip_character		#Branches if character is a space
+	beq $t6, $t4, skip_character		#Branches if character is a tab
+	
+	
+	
 	
 	
