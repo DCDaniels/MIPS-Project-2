@@ -97,10 +97,19 @@ main:
 	ending_characters:			#Function to check for trailing spaces and tabs
 	addi $t1,$t1, 1 			#Goes to next byte
 	lb $t6, 0($t1)  			#Gets a characher of string
-	beq $t6,$t3, ending_characters		#Branches if trailing character is a space
+	beq $t6,$t3, good_input			#Branches if trailing character is a space
 	bne $t6,$t3, tab_checker		#Branches if not equal to a space
-	
+	j ending_characters			#Jumps back to check next posistion
 	
 	tab_checker:				#Function to see if character is equal to a tab
 	bne $t6,$t4, output_bad_input 		#Branches if not equal to a tab
+	j ending_characters			#Jumps to ending character to check nexrt posisition
+	
+	
+	good_input:				#Function to send good inputs to the subprogram
+	jal subprogram				#Subprogram to do calculations
+	li $v0, 10				#End of file
+	syscall					#System Call
+	
+
 	
