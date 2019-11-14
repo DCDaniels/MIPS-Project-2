@@ -19,7 +19,12 @@ main:
 	li $t2,4				#Stored to check if variable is greater than 4
 	li $t3,32				#Stored a space in $t3 to check for spaces
 	li $t4,9				#Stored to check for tabs
+	li $t5,0				#Variable for total valid characters
 	
+	
+	loop:
+		bgt $t5, $t2, output_bad_input	#Branch if more than 4 good characters
+		lb $t6, 0($t1)			#Gets each integer from the input
 	
 	
 	
