@@ -58,16 +58,17 @@ main:
 	check_character:			#Function to see if character is invalid
 	blt $t6, $s0, output_bad_input		#Branch if character is below ASCII number for 0
 	bgt $t6, $s1, check_capital		#Branch if character is above ASCII number for 9
+	addi $t6, $t6, -48			#Convert it to its decimal counterpart
 	
 	
 	check_capital:				#Function that checks if input is valid when above numbers
 	blt $t6,$s2, output_bad_input		#Branch if character is less than $s2
 	bgt $t6,$s3, check_common		#Branch if character is greater than $s3
-
+	addi $t6, $t6, -55			#Convert it to its decimal counterpart
 
 	check_common:				#Function that checks if input is valid when above capital letters
 	blt $t6, $s4, output_bad_input		#Branch if character is less than $s4
 	bgt $t6, $s5, output_bad_input		#Branch if character is gretaer than $s5
-	
+	addi $t6, $t6, -87			#Convert it to its decimal counterpart
 	
 	
