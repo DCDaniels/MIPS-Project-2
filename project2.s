@@ -35,11 +35,11 @@ main:
 	
 	
 	loop:
-		bgt $t5, $t2, output_bad_input		#Branch if more than 4 good characters
-		lb $t6, 0($t1)				#Gets each integer from the input
-		beq $t5, $t0, beginning_characters	#Branch as long as no valid characters have been found
-		beq $t6, $t3, ending_characters		#Branch if trailing character is a space
-		beq $t6, $t4, ending_characters		#Branch if trailing characters is a tab
+		bgt $t5,$t2, output_bad_input		#Branch if more than 4 good characters
+		lb $t6,0($t1)				#Gets each integer from the input
+		beq $t5,$t0, beginning_characters	#Branch as long as no valid characters have been found
+		beq $t6,$t3, ending_characters		#Branch if trailing character is a space
+		beq $t6,$t4, ending_characters		#Branch if trailing characters is a tab
 	
 	
 	output_bad_input:			#Fucntion to print invalid output
@@ -52,30 +52,42 @@ main:
 	
 	
 	beginning_characters:			#Function that checks if character is a space or tab
-	beq $t6, $t3, skip_character		#Branches if character is a space
-	beq $t6, $t4, skip_character		#Branches if character is a tab
+	beq $t6,$t3, skip_character		#Branches if character is a space
+	beq $t6,$t4, skip_character		#Branches if character is a tab
 	j check_character			#Jump to check_character
 	
 	
 	skip_character:				#Function that moves to next character
-	addi $t1,$t1,1				#Increments $t1 to check next number
+	addi $t1,$t1, 1				#Increments $t1 to check next number
 	j loop					#Jumps back to beginning of loop
 	
 	
 	check_character:			#Function to see if character is invalid
-	blt $t6, $s0, output_bad_input		#Branch if character is below ASCII number for 0
-	bgt $t6, $s1, check_capital		#Branch if character is above ASCII number for 9
-	addi $t6, $t6, -48			#Convert it to its decimal counterpart
+	blt $t6,$s0, output_bad_input		#Branch if character is below ASCII number for 0
+	bgt $t6,$s1, check_capital		#Branch if character is above ASCII number for 9
+	addi $t6,$t6, -48			#Convert it to its decimal counterpart
 	
 	
 	check_capital:				#Function that checks if input is valid when above numbers
 	blt $t6,$s2, output_bad_input		#Branch if character is less than $s2
 	bgt $t6,$s3, check_common		#Branch if character is greater than $s3
-	addi $t6, $t6, -55			#Convert it to its decimal counterpart
+	addi $t6,$t6, -55			#Convert it to its decimal counterpart
+
 
 	check_common:				#Function that checks if input is valid when above capital letters
-	blt $t6, $s4, output_bad_input		#Branch if character is less than $s4
-	bgt $t6, $s5, output_bad_input		#Branch if character is gretaer than $s5
-	addi $t6, $t6, -87			#Convert it to its decimal counterpart
+	blt $t6,$s4, output_bad_input		#Branch if character is less than $s4
+	bgt $t6,$s5, output_bad_input		#Branch if character is gretaer than $s5
+	addi $t6,$t6, -87			#Convert it to its decimal counterpart
+	
+	
+	incrementor:
+	sb $t4, 0($s4)		 		#Stores the character in a string
+	addi $s4,$s4, 1 			#Increment array posistion
+	addi $t0,$t0, 1 			#Increment the input string
+	addi $t5,$t5, 1 			#Increment the number of valid characters
+	j loop					#Go back to loop
+	
+	
+	ending_characters:
 	
 	
