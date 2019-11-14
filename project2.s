@@ -33,10 +33,10 @@ main:
 	output_bad_input:			#Fucntion to print invalid output
 	li $v0,4
 	la $a0, BadInput			#Prints Invalid input
-	syscall
+	syscall					#Issues a System Call
 	
 	li $v0, 10				#End of program if this is reached
-	syscall					
+	syscall					#Issues a System Call
 	
 	
 	beginning_characters:			#Function that checks if character is a space or tab
@@ -44,6 +44,8 @@ main:
 	beq $t6, $t4, skip_character		#Branches if character is a tab
 	
 	
-	
+	skip_character:				#Function that moves to next character
+	addi $t1,$t1,1				#Increments $t1 to check next number
+	j loop					#Jumps back to beginning of loop
 	
 	
