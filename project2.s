@@ -66,24 +66,27 @@ main:
 	blt $t6,$s0, output_bad_input		#Branch if character is below ASCII number for 0
 	bgt $t6,$s1, check_capital		#Branch if character is above ASCII number for 9
 	addi $t6,$t6, -48			#Convert it to its decimal counterpart
+	j incrementor				#Jump to incrementor function
 	
 	
 	check_capital:				#Function that checks if input is valid when above numbers
 	blt $t6,$s2, output_bad_input		#Branch if character is less than $s2
 	bgt $t6,$s3, check_common		#Branch if character is greater than $s3
 	addi $t6,$t6, -55			#Convert it to its decimal counterpart
-
+	j incrementor				#Jump to incrementor function
+	
 
 	check_common:				#Function that checks if input is valid when above capital letters
 	blt $t6,$s4, output_bad_input		#Branch if character is less than $s4
 	bgt $t6,$s5, output_bad_input		#Branch if character is gretaer than $s5
 	addi $t6,$t6, -87			#Convert it to its decimal counterpart
+	j incrementor				#Jump to incrementor function
 	
 	
 	incrementor:
-	sb $t4, 0($s4)		 		#Stores the character in a string
-	addi $s4,$s4, 1 			#Increment array posistion
-	addi $t0,$t0, 1 			#Increment the input string
+	sb $t6, 0($s6)		 		#Stores the character in a string
+	addi $s6,$s6, 1 			#Increment array posistion
+	addi $t1,$t1, 1 			#Increment the input string
 	addi $t5,$t5, 1 			#Increment the number of valid characters
 	j loop					#Go back to loop
 	
