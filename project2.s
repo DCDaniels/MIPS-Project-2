@@ -83,7 +83,7 @@ main:
 	j incrementor				#Jump to incrementor function
 	
 	
-	incrementor:
+	incrementor:				#Function to increment all variables
 	sb $t6, 0($s6)		 		#Stores the character in a string
 	addi $s6,$s6, 1 			#Increment array posistion
 	addi $t1,$t1, 1 			#Increment the input string
@@ -91,6 +91,10 @@ main:
 	j loop					#Go back to loop
 	
 	
-	ending_characters:
+	ending_characters:			#Function to check for trailing spaces and tabs
+	addi $t1, $t1, 1 			#Goes to next byte
+	lb $t6, 0($t1)  			#Gets a characher of string
+	beq $t6, $t3, ending_characters		#Branches if trailing character is a space
+	beq $t6, $t4, ending_characters 	#Branches if trailing character is a tab
 	
 	
