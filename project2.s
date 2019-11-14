@@ -34,10 +34,6 @@ main:
 		beq $t5, $t0, beginning_characters	#Branch as long as no valid characters have been found
 		
 	
-	check_character:			#Function to see if character is invalid
-	blt $t6, $s0, output_bad_input		#Branch if character is below ASCII number for 0
-	bgt $t6, $s1, check_capital		#Branch if character is above ASCII number for 9
-	
 	
 	output_bad_input:			#Fucntion to print invalid output
 	li $v0,4
@@ -58,10 +54,20 @@ main:
 	addi $t1,$t1,1				#Increments $t1 to check next number
 	j loop					#Jumps back to beginning of loop
 	
+	
+	check_character:			#Function to see if character is invalid
+	blt $t6, $s0, output_bad_input		#Branch if character is below ASCII number for 0
+	bgt $t6, $s1, check_capital		#Branch if character is above ASCII number for 9
+	
+	
 	check_capital:				#Function that checks if input is valid when above numbers
 	blt $t6,$s2, output_bad_input		#Branch if character is less than $s2
 	bgt $t6,$s3, check_common		#Branch if character is greater than $s3
 
+
 	check_common:				#Function that checks if input is valid when above capital letters
 	blt $t6, $s4, output_bad_input		#Branch if character is less than $s4
 	bgt $t6, $s5, output_bad_input		#Branch if character is gretaer than $s5
+	
+	
+	
