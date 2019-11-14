@@ -95,9 +95,12 @@ main:
 	
 	
 	ending_characters:			#Function to check for trailing spaces and tabs
-	addi $t1, $t1, 1 			#Goes to next byte
+	addi $t1,$t1, 1 			#Goes to next byte
 	lb $t6, 0($t1)  			#Gets a characher of string
-	beq $t6, $t3, ending_characters		#Branches if trailing character is a space
-	beq $t6, $t4, ending_characters 	#Branches if trailing character is a tab
+	beq $t6,$t3, ending_characters		#Branches if trailing character is a space
+	bne $t6,$t3, tab_checker		#Branches if not equal to a space
 	
+	
+	tab_checker:				#Function to see if character is equal to a tab
+	bne $t6,$t4, output_bad_input 		#Branches if not equal to a tab
 	
