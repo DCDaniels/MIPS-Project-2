@@ -21,6 +21,8 @@ main:
 	li $t4,9				#Stored to check for tabs
 	li $t5,0				#Variable for total valid characters
 	li $t0,0				#Variable initialized to 0
+	li $s0,48				#For lowest valid input option
+	
 	
 	
 	loop:
