@@ -20,12 +20,13 @@ main:
 	li $t3,32				#Stored a space in $t3 to check for spaces
 	li $t4,9				#Stored to check for tabs
 	li $t5,0				#Variable for total valid characters
-	
+	li $t0,0				#Variable initialized to 0
 	
 	
 	loop:
-		bgt $t5, $t2, output_bad_input	#Branch if more than 4 good characters
-		lb $t6, 0($t1)			#Gets each integer from the input
+		bgt $t5, $t2, output_bad_input		#Branch if more than 4 good characters
+		lb $t6, 0($t1)				#Gets each integer from the input
+		beq $t5, $t0, beginning characters	#Branch as long as no valid characters have been found
 		
 	
 	output_bad_input:
