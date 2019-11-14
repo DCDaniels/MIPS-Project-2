@@ -58,4 +58,5 @@ main:
 	j loop					#Jumps back to beginning of loop
 	
 	check_capital:				#Function that checks if input is valid when above numbers
-	
+	blt $t6,$s2, output_bad_input		#Branch if character is less than $s2
+	bgt $t6,$s3, check_common		#Branch if character is greater than $s3
