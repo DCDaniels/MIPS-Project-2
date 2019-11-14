@@ -31,6 +31,8 @@ main:
 		beq $t5, $t0, beginning_characters	#Branch as long as no valid characters have been found
 		
 	
+	invalid_characters:			#Function to see if character is invalid
+	
 	
 	output_bad_input:			#Fucntion to print invalid output
 	li $v0,4
@@ -44,6 +46,7 @@ main:
 	beginning_characters:			#Function that checks if character is a space or tab
 	beq $t6, $t3, skip_character		#Branches if character is a space
 	beq $t6, $t4, skip_character		#Branches if character is a tab
+	j 
 	
 	
 	skip_character:				#Function that moves to next character
