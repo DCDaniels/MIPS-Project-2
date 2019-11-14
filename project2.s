@@ -27,6 +27,8 @@ main:
 	li $s3,89				#For highest capital letter (I go to Y not Z)
 	li $s4,97				#For lowest common letter
 	li $s5,121				#For highest common letter (I go to y not z)
+	li $t7,0				#Initialized for sum
+	
 	
 	loop:
 		bgt $t5, $t2, output_bad_input		#Branch if more than 4 good characters
