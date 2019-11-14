@@ -110,11 +110,17 @@ main:
 	good_input:				#Function to send good inputs to the subprogram
 	li $a0, 35 				#initialized the base to 35
 	jal subprogram				#Subprogram to do calculations
-	
+	add $a1,$zero,$s6			
+	sub $a1,$a1,$t5				
 	li $v0, 10				#End of file
 	syscall					#System Call
 	
 			
-	subprogram:
+	subprogram:				#Subprogram to do calculations
+	li $s0, 1				#Reinitialized to store 1
+	li $s1, 2				#Reinitialized to store 2
+	li $s2, 3				#Reinitialized to store 3
+	li $s3, 4				#Reinitialized to store 4
+	
 	jr $ra
 	
