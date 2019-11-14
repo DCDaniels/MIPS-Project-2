@@ -101,15 +101,20 @@ main:
 	bne $t6,$t3, tab_checker		#Branches if not equal to a space
 	j ending_characters			#Jumps back to check next posistion
 	
+	
 	tab_checker:				#Function to see if character is equal to a tab
 	bne $t6,$t4, output_bad_input 		#Branches if not equal to a tab
 	j ending_characters			#Jumps to ending character to check nexrt posisition
 	
 	
 	good_input:				#Function to send good inputs to the subprogram
+	li $a0, 35 				#initialized the base to 35
 	jal subprogram				#Subprogram to do calculations
+	
 	li $v0, 10				#End of file
 	syscall					#System Call
 	
-
+			
+	subprogram:
+	jr $ra
 	
