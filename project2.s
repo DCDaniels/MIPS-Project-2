@@ -25,7 +25,8 @@ main:
 	li $s1,57				#For highest valid non letter input option
 	li $s2,65				#For lowest capital letter
 	li $s3,89				#For highest capital letter (I go to Y not Z)
-	
+	li $s4,97				#For lowest common letter
+	li $s5,121				#For highest common letter (I go to y not z)
 	
 	loop:
 		bgt $t5, $t2, output_bad_input		#Branch if more than 4 good characters
@@ -60,3 +61,7 @@ main:
 	check_capital:				#Function that checks if input is valid when above numbers
 	blt $t6,$s2, output_bad_input		#Branch if character is less than $s2
 	bgt $t6,$s3, check_common		#Branch if character is greater than $s3
+
+	check_common:				#Function that checks if input is valid when above capital letters
+	blt $t6, $s4, output_bad_input		#Branch if character is less than $s4
+	bgt $t6, $s5, output_bad_input		#Branch if character is gretaer than $s5
