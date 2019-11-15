@@ -116,6 +116,7 @@ main:
 	
 	add $t8,$zero,$v0								
 	li $v0, 10				#End of file
+	move
 	syscall					#System Call
 	
 			
@@ -165,9 +166,8 @@ main:
 	mflo $s0				#Moves answer to a register
 	add $a3,$a3,$s0				#Increment the character
 	addi $a1,$a1, 1				#Increments the character
-
-	j three:				#Jump to function three
-	
+	add $v0,$zero,$a3			#Put value in $v0 to return it
+	jr $ra					#Returns to good_input
 	
 	
 	
