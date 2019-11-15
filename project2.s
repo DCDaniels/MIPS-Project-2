@@ -114,7 +114,7 @@ main:
 	sub $a1,$a1,$t5				#Store the address to the first character
 	jal subprogram				#Subprogram to do calculations
 	
-	add $s6,$zero,$v0								
+	add $t8,$zero,$v0								
 	li $v0, 10				#End of file
 	syscall					#System Call
 	
@@ -124,6 +124,15 @@ main:
 	li $s1, 2				#Reinitialized to store 2
 	li $s2, 3				#Reinitialized to store 3
 	li $s3, 4				#Reinitialized to store 4
-	
+	beq $a2,$s3, four			#Branch if 4 characters
+	beq $a2,$s2, three			#Branch if 3 characters
+	beq $a2,$s1, two			#Branch if 2 characters
+	beq $a2,$s0, one			#Branch if 1 characters
 
+	four:					#Function if 4 characters present
+	li $s3, 42875				#Reinitialize as 32 to the 3rd power
+	lb $t3, 0($a1)				
+	
+	
+	
 	
