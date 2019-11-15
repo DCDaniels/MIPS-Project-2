@@ -30,7 +30,7 @@ main:
 	li $s3,89				#For highest capital letter (I go to Y not Z)
 	li $s4,97				#For lowest common letter
 	li $s5,121				#For highest common letter (I go to y not z)
-	li $t7,0				#Initialized for sum
+	li $a3,0				#Initialized for sum
 	la $s6, list				#Stores the list in a variable
 	li $s7, 0x0A				#Stored a new line
 	
@@ -108,9 +108,10 @@ main:
 	
 	
 	good_input:				#Function to send good inputs to the subprogram
-	li $a0, 35 				#initialized the base to 35
-	add $a1,$zero,$s6			
-	sub $a1,$a1,$t5
+	li $a0, 35 				#Initialized the base to 35
+	add $a2,$zero,$t5			#Stores the sum of characters in a different variable
+	add $a1,$zero,$s6			#Moves the word to $a1
+	sub $a1,$a1,$t5				#Store the address to the first character
 	jal subprogram				#Subprogram to do calculations
 					
 	li $v0, 10				#End of file
