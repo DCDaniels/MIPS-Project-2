@@ -113,7 +113,8 @@ main:
 	add $a1,$zero,$s6			#Moves the word to $a1
 	sub $a1,$a1,$t5				#Store the address to the first character
 	jal subprogram				#Subprogram to do calculations
-					
+	
+	add $s6,$zero,$v0								
 	li $v0, 10				#End of file
 	syscall					#System Call
 	
@@ -124,5 +125,5 @@ main:
 	li $s2, 3				#Reinitialized to store 3
 	li $s3, 4				#Reinitialized to store 4
 	
-	jr $ra
+
 	
