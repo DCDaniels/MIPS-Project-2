@@ -43,7 +43,7 @@ main:
 		beq $t6,$t3, ending_characters		#Branch if trailing character is a space
 		beq $t6,$t4, ending_characters		#Branch if trailing characters is a tab
 		beq $t6,$s7, good_input			#Branch if new line comes before a bad input
-	
+		j check_character			#Jump to check character function if it doesnt branch
 	
 	output_bad_input:			#Fucntion to print invalid output
 	li $v0,4
