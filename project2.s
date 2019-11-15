@@ -115,10 +115,12 @@ main:
 	jal subprogram				#Subprogram to do calculations
 	
 	add $t8,$zero,$v0								
-	li $v0, 10				#End of file
-	move
+	li $v0, 1				#Prints the result of the decimal number
+	move $a0, $t8
 	syscall					#System Call
 	
+	li $v0, 10				#End of File
+	syscall					#System Call
 			
 	subprogram:				#Subprogram to do calculations
 	li $s0, 1				#Reinitialized to store 1
