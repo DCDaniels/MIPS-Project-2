@@ -131,7 +131,12 @@ main:
 
 	four:					#Function if 4 characters present
 	li $s3, 42875				#Reinitialize as 32 to the 3rd power
-	lb $t3, 0($a1)				
+	lb $t3, 0($a1)				#Load the first character				
+	multu $s3,$t3				#Convert the 4th character to base 10
+	mflo $s3				#Moves answer to a register
+	add $a3,$a3,$s3				#Increment the character
+	j three:				#Jump to function three
+	
 	
 	
 	
