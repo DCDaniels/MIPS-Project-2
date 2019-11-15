@@ -139,7 +139,7 @@ main:
 	mflo $s3				#Moves answer to a register
 	add $a3,$a3,$s3				#Adds to the sum
 	addi $a1,$a1, 1				#Increments the character
-	j three:				#Jump to function three
+	j three				#Jump to function three
 	
 	
 	three:
@@ -149,7 +149,7 @@ main:
 	mflo $s2				#Moves answer to a register
 	add $a3,$a3,$s2				#Increment the character
 	addi $a1,$a1, 1				#Increments the character
-	j two:					#Jump to function two
+	j two					#Jump to function two
 	
 	
 	two:
@@ -159,7 +159,7 @@ main:
 	mflo $s1				#Moves answer to a register
 	add $a3,$a3,$s1				#Increment the character
 	addi $a1,$a1, 1				#Increments the character
-	j one:					#Jump to function one
+	j one					#Jump to function one
 	
 	one:
 	li $s0, 1				#Reinitialize as 32 to the 2nd power
