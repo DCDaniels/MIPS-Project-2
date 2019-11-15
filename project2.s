@@ -134,9 +134,18 @@ main:
 	lb $t3, 0($a1)				#Load the first character				
 	multu $s3,$t3				#Convert the 4th character to base 10
 	mflo $s3				#Moves answer to a register
-	add $a3,$a3,$s3				#Increment the character
+	add $a3,$a3,$s3				#Adds to the sum
+	add $a1,$a1, 1				#Increments the character
 	j three:				#Jump to function three
 	
+	three:
+	li $s2, 1225				#Reinitialize as 32 to the 2nd power
+	lb $t3, 0($a1)				#Load the first character				
+	multu $s2,$t3				#Convert the 4th character to base 10
+	mflo $s2				#Moves answer to a register
+	add $a3,$a3,$s2				#Increment the character
+	add $a1,$a1, 1				#Increments the character
+	j two:					#Jump to function three
 	
 	
 	
