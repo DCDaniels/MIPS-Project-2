@@ -109,9 +109,10 @@ main:
 	
 	good_input:				#Function to send good inputs to the subprogram
 	li $a0, 35 				#initialized the base to 35
-	jal subprogram				#Subprogram to do calculations
 	add $a1,$zero,$s6			
-	sub $a1,$a1,$t5				
+	sub $a1,$a1,$t5
+	jal subprogram				#Subprogram to do calculations
+					
 	li $v0, 10				#End of file
 	syscall					#System Call
 	
