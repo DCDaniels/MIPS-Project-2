@@ -135,28 +135,38 @@ main:
 	multu $s3,$t3				#Convert the 4th character to base 10
 	mflo $s3				#Moves answer to a register
 	add $a3,$a3,$s3				#Adds to the sum
-	add $a1,$a1, 1				#Increments the character
+	addi $a1,$a1, 1				#Increments the character
 	j three:				#Jump to function three
 	
 	
 	three:
 	li $s2, 1225				#Reinitialize as 32 to the 2nd power
 	lb $t3, 0($a1)				#Load the first character				
-	multu $s2,$t3				#Convert the 4th character to base 10
+	multu $s2,$t3				#Convert the 3rd character to base 10
 	mflo $s2				#Moves answer to a register
 	add $a3,$a3,$s2				#Increment the character
-	add $a1,$a1, 1				#Increments the character
-	j two:					#Jump to function three
+	addi $a1,$a1, 1				#Increments the character
+	j two:					#Jump to function two
 	
 	
 	two:
-	li $s1, 35				#Reinitialize as 32 to the 2nd power
+	li $s1, 35				#Reinitialize as 32 to the 1st power
 	lb $t3, 0($a1)				#Load the first character				
-	multu $s1,$t3				#Convert the 4th character to base 10
+	multu $s1,$t3				#Convert the 2nd character to base 10
 	mflo $s1				#Moves answer to a register
 	add $a3,$a3,$s1				#Increment the character
-	add $a1,$a1, 1				#Increments the character
-	j one:				#Jump to function three
+	addi $a1,$a1, 1				#Increments the character
+	j one:					#Jump to function one
+	
+	one:
+	li $s0, 1				#Reinitialize as 32 to the 2nd power
+	lb $t3, 0($a1)				#Load the first character				
+	multu $s0,$t3				#Convert the 4th character to base 10
+	mflo $s0				#Moves answer to a register
+	add $a3,$a3,$s0				#Increment the character
+	addi $a1,$a1, 1				#Increments the character
+
+	j three:				#Jump to function three
 	
 	
 	
